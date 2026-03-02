@@ -1,0 +1,279 @@
+/**
+ * NIIDO HOME — Landing Page JavaScript
+ * Responsabilidades:
+ *  - Galería de producto con thumbnails
+ *  - Lightbox de imágenes
+ *  - Acordeón de características
+ *  - Animaciones de entrada (Intersection Observer)
+ *  - Header sticky con sombra al scroll
+ *  - Menú móvil toggle
+ *  - Contador de promo (countdown)
+ */
+
+'use strict';
+
+/* ===================================================
+   1. HEADER — sombra al hacer scroll
+   =================================================== */
+(function initHeader() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ===================================================
+   2. MENÚ MÓVIL
+   =================================================== */
+(function initMobileMenu() {
+  const btn   = document.getElementById('menu-toggle');
+  const menu  = document.getElementById('mobile-menu');
+  const links = menu ? menu.querySelectorAll('a') : [];
+
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('active');
+    btn.setAttribute('aria-expanded', String(isOpen));
+    // Intercambiar icono hamburguesa / X
+    btn.querySelector('.icon-open').classList.toggle('hidden', isOpen);
+    btn.querySelector('.icon-close').classList.toggle('hidden', !isOpen);
+  });
+
+  // Cerrar menú al elegir link
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.querySelector('.icon-open').classList.remove('hidden');
+      btn.querySelector('.icon-close').classList.add('hidden');
+    });
+  });
+})();
+
+/* ===================================================
+   3. GALERÍA DE PRODUCTO
+   =================================================== */
+(function initGallery() {
+  const mainImg  = document.getElementById('gallery-main-img');
+  const thumbs   = document.querySelectorAll('.gallery-thumb');
+
+  if (!mainImg || !thumbs.length) return;
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const src = thumb.dataset.src;
+      const alt = thumb.dataset.alt || '';
+
+      // Fade out / switch / fade in
+      mainImg.style.opacity = '0';
+      setTimeout(() => {
+        mainImg.src = src;
+        mainImg.alt = alt;
+        mainImg.style.opacity = '1';
+      }, 200);
+
+      // Marcar activo
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+
+  // Activar primera thumbnail
+  if (thumbs[0]) thumbs[0].classList.add('active');
+
+  // Transición suave en imagen principal
+  mainImg.style.transition = 'opacity 0.2s ease';
+})();
+
+/* ===================================================
+   4. LIGHTBOX
+   =================================================== */
+(function initLightbox() {
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn    = document.getElementById('lightbox-close');
+  const mainImg     = document.getElementById('gallery-main-img');
+
+  if (!lightbox || !lightboxImg || !mainImg) return;
+
+  const open = (src) => {
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Click en imagen principal → lightbox
+  const galleryMainWrap = document.querySelector('.gallery-main');
+  if (galleryMainWrap) {
+    galleryMainWrap.addEventListener('click', () => open(mainImg.src));
+  }
+
+  // Cerrar con botón o click fuera
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+
+  // Cerrar con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+})();
+
+/* ===================================================
+   5. ACORDEÓN
+   =================================================== */
+(function initAccordion() {
+  const buttons = document.querySelectorAll('.accordion-btn');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body     = btn.nextElementSibling;
+      const isOpen   = btn.classList.contains('open');
+
+      // Cerrar todos
+      document.querySelectorAll('.accordion-btn.open').forEach(openBtn => {
+        openBtn.classList.remove('open');
+        openBtn.nextElementSibling.classList.remove('open');
+      });
+
+      // Abrir el clickeado (si estaba cerrado)
+      if (!isOpen) {
+        btn.classList.add('open');
+        body.classList.add('open');
+      }
+    });
+  });
+
+  // Abrir el primero por defecto
+  if (buttons[0]) {
+    buttons[0].classList.add('open');
+    buttons[0].nextElementSibling.classList.add('open');
+  }
+})();
+
+/* ===================================================
+   6. ANIMATIONS — Intersection Observer
+   =================================================== */
+(function initReveal() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: mostrar todo
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+      .forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+    .forEach(el => observer.observe(el));
+})();
+
+/* ===================================================
+   7. COUNTDOWN (Promo limitada)
+   =================================================== */
+(function initCountdown() {
+  const el = document.getElementById('promo-countdown');
+  if (!el) return;
+
+  // Fecha límite: 30 días desde hoy
+  const deadline = new Date();
+  deadline.setDate(deadline.getDate() + 30);
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const update = () => {
+    const now  = new Date();
+    const diff = deadline - now;
+    if (diff <= 0) {
+      el.textContent = '¡Promoción finalizada!';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('cd-days').textContent    = pad(d);
+    document.getElementById('cd-hours').textContent   = pad(h);
+    document.getElementById('cd-minutes').textContent = pad(m);
+    document.getElementById('cd-seconds').textContent = pad(s);
+  };
+
+  update();
+  setInterval(update, 1000);
+})();
+
+/* ===================================================
+   8. SMOOTH SCROLL para links internos
+   =================================================== */
+(function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href').slice(1);
+      const target   = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+      const offset = 80; // altura del header fijo
+      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+/* ===================================================
+   9. SELECTOR DE TALLA (colores)
+   =================================================== */
+(function initSizeSelector() {
+  const options = document.querySelectorAll('.size-option');
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      options.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+    });
+  });
+})();
+
+/* ===================================================
+   10. STICKY CTA — mostrar después de scroll
+   =================================================== */
+(function initStickyCTA() {
+  const stickyCTA = document.getElementById('sticky-cta');
+  if (!stickyCTA) return;
+
+  const heroSection = document.getElementById('hero');
+  if (!heroSection) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) {
+      stickyCTA.style.transform = 'translateY(0)';
+    } else {
+      stickyCTA.style.transform = 'translateY(100%)';
+    }
+  }, { threshold: 0 });
+
+  observer.observe(heroSection);
+})();

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Niido Home — Colección Alma de Mar. Edredón premium acanalado. Con tu compra participa en nuestra gran promo: estadía 5 días 4 noches en Santa Marta." />
+  <meta name="keywords" content="edredón, niido home, alma de mar, ropa de cama, promo, santa marta" />
+  <meta property="og:title" content="Niido Home | Colección Alma de Mar" />
+  <meta property="og:description"
+    content="Edredón premium + gran promo: 5 días 4 noches en Santa Marta, camioneta Sportage y más." />
+  <meta property="og:type" content="website" />
+  <title>NIIDO HOME | Colección Alma de Mar — Edredón Premium</title>
+
+  <!-- ====================================================
+     FAVICONS RESPONSIVOS
+     ==================================================== -->
+  <!-- Favicon clásico (compatibilidad universal) -->
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  <!-- PNG 16x16 (pestañas del navegador) -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
+  <!-- PNG 32x32 (escritorio HD) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+  <!-- PNG 96x96 (Google TV / accesos directos) -->
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png" />
+  <!-- Apple Touch Icon (iPhone / iPad al guardar en pantalla de inicio) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+  <!-- Android Chrome -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png" />
+  <!-- Web App Manifest (PWA / Android) -->
+  <link rel="manifest" href="assets/icons/site.webmanifest" />
+  <!-- Color del navegador en móvil -->
+  <meta name="theme-color" content="#B8935A" />
+  <meta name="msapplication-TileColor" content="#B8935A" />
+
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            camel: '#B8935A',
+            'camel-dark': '#8C6B3E',
+            gold: '#C9A84C',
+            beige: '#F5EFE6',
+            arena: '#E8DDD0',
+            graphite: '#2C2C2C',
+            charcoal: '#1A1A1A',
+            cream: '#FFF9F2',
+            ocean: '#4A7C8E',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+            script: ['"Great Vibes"', 'cursive'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="bg-cream font-body">
+
+  <!-- ====================================================
+     LIGHTBOX
+     ==================================================== -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <div id="lightbox-close" role="button" tabindex="0" aria-label="Cerrar">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <img id="lightbox-img" src="" alt="Imagen del producto ampliada" />
+  </div>
+
+  <!-- ====================================================
+     HEADER / NAV
+     ==================================================== -->
+  <header id="site-header" role="banner">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="#hero" aria-label="Ir al inicio — Niido Home">
+        <img src="assets/images/logo.png" alt="Niido Home — Tu lugar, tu espacio, tu mundo" class="nav-logo" />
+      </a>
+
+      <!-- Links desktop -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#product-gallery" class="nav-link">Producto</a>
+        <a href="#product-features" class="nav-link">Características</a>
+        <a href="#promo-section" class="nav-link">Promo</a>
+      </div>
+
+      <!-- CTA Desktop -->
+      <a href="#promo-section" class="btn-cta hidden md:inline-flex text-sm">
+        <i class="fa-solid fa-gift"></i> Ver Promo
+      </a>
+
+      <!-- Hamburguesa móvil -->
+      <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-graphite hover:text-camel transition-colors"
+        aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars icon-open text-xl"></i>
+        <i class="fa-solid fa-xmark icon-close text-xl hidden"></i>
+      </button>
+    </nav>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu"
+      class="md:hidden overflow-hidden max-h-0 transition-all duration-300 bg-white border-t border-camel/10"
+      style="transition: max-height 0.3s ease;">
+      <div class="px-4 py-4 flex flex-col gap-1">
+        <a href="#product-gallery"
+          class="py-3 px-4 rounded-lg text-sm font-semibold text-graphite hover:bg-beige hover:text-camel transition-colors">Producto</a>
+        <a href="#product-features"
+          class="py-3 px-4 rounded-lg text-sm font-semibold text-graphite hover:bg-beige hover:text-camel transition-colors">Características</a>
+        <a href="#promo-section"
+          class="py-3 px-4 rounded-lg text-sm font-semibold text-graphite hover:bg-beige hover:text-camel transition-colors">Promo</a>
+        <div class="pt-2">
+          <a href="#promo-section" class="btn-cta w-full justify-center text-sm">
+            <i class="fa-solid fa-gift"></i> Ver Promo
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    #mobile-menu.active {
+      max-height: 400px !important;
+    }
+  </style>
+
+  <!-- ====================================================
+     HERO
+     ==================================================== -->
+  <section id="hero" class="pt-16 lg:pt-20">
+    <div class="hero-bg"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 xl:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Contenido -->
+        <div class="hero-content reveal-left">
+          <p class="hero-eyebrow">✦ Colección Exclusiva 2026 ✦</p>
+          <h1 class="hero-title">
+            La suavidad que<br /><span>mereces en casa</span>
+          </h1>
+          <p class="hero-subtitle">Alma de Mar</p>
+          <p class="hero-desc">
+            Edredón premium de diseño acanalado. Elegancia, calidez y confort superiores para transformar tu dormitorio
+            en el refugio que siempre soñaste.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href="#product-gallery" class="btn-cta">
+              <i class="fa-solid fa-eye"></i> Ver el Producto
+            </a>
+            <a href="#promo-section" class="btn-outline">
+              <i class="fa-solid fa-star"></i> Ver Promo
+            </a>
+          </div>
+          <!-- Trust badges -->
+          <div class="flex flex-wrap items-center gap-6 mt-10 text-sm text-gray-500">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-halved text-camel"></i>
+              <span>Compra segura</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-truck text-camel"></i>
+              <span>Envío nacional</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-rotate-left text-camel"></i>
+              <span>Satisfacción garantizada</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen hero -->
+        <div class="hero-image-wrap reveal-right">
+          <img src="assets/images/edredon_mockup.png"
+            alt="Edredón Alma de Mar — Niido Home — Presentación oficial del producto" class="w-full max-w-xl mx-auto"
+            loading="eager" />
+          <!-- Badges flotantes -->
+          <div class="hero-badge hero-badge-1">
+            <div class="text-camel text-xs uppercase tracking-widest mb-1">Colección</div>
+            <div class="font-display text-base font-bold">Alma de Mar</div>
+          </div>
+          <div class="hero-badge hero-badge-2 text-center">
+            <div class="text-yellow-400 text-xs mb-0.5">★★★★★</div>
+            <div class="text-xs">+200 clientes felices</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+     GALERÍA DEL PRODUCTO
+     ==================================================== -->
+  <section id="product-gallery" class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Encabezado -->
+      <div class="text-center mb-14 reveal">
+        <p class="section-eyebrow">✦ Detalle del Producto ✦</p>
+        <h2 class="section-title text-4xl lg:text-5xl mt-3">
+          Edredón <span class="collection-tag">Alma de Mar</span>
+        </h2>
+        <div class="section-divider"><span>🌊</span></div>
+        <p class="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
+          Diseño acanalado premium que se adapta perfectamente al estilo de cualquier dormitorio. Suave, versátil y de
+          fácil cuidado.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+        <!-- Galería imágenes -->
+        <div class="reveal-left">
+          <!-- Imagen principal -->
+          <div class="gallery-main mb-4">
+            <img id="gallery-main-img" src="assets/images/edredon-6.jpg" alt="Edredón Alma de Mar — Niido Home"
+              loading="lazy" />
+          </div>
+          <!-- Thumbnails -->
+          <div class="grid grid-cols-5 gap-2 sm:gap-3">
+            <div class="gallery-thumb active" data-src="assets/images/edredon-6.jpg"
+              data-alt="Edredón Alma de Mar en habitación">
+              <img src="assets/images/edredon-6.jpg" alt="Vista 1 del edredón" loading="lazy" />
+            </div>
+            <div class="gallery-thumb" data-src="assets/images/edredon-1.jpg" data-alt="Edredón color neutral">
+              <img src="assets/images/edredon-1.jpg" alt="Vista 2 del edredón" loading="lazy" />
+            </div>
+            <div class="gallery-thumb" data-src="assets/images/edredon-2.jpg" data-alt="Edredón beige">
+              <img src="assets/images/edredon-2.jpg" alt="Vista 3 del edredón" loading="lazy" />
+            </div>
+            <div class="gallery-thumb" data-src="assets/images/edredon-3.jpg" data-alt="Edredón detalle textura">
+              <img src="assets/images/edredon-3.jpg" alt="Vista 4 del edredón" loading="lazy" />
+            </div>
+            <div class="gallery-thumb" data-src="assets/images/edredon-4.jpg" data-alt="Edredón en cama">
+              <img src="assets/images/edredon-4.jpg" alt="Vista 5 del edredón" loading="lazy" />
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 text-center mt-3">
+            <i class="fa-regular fa-hand-pointer"></i> Haz clic en la imagen para ampliar
+          </p>
+        </div>
+
+        <!-- Info del producto -->
+        <div class="reveal-right">
+          <!-- Etiqueta colección -->
+          <div class="flex items-center gap-2 mb-4">
+            <span
+              class="px-3 py-1 bg-camel/10 text-camel-dark text-xs font-semibold rounded-full tracking-wider uppercase">Colección
+              Alma de Mar</span>
+            <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full">✓ Disponible</span>
+          </div>
+
+          <h3 class="font-display text-3xl lg:text-4xl font-bold text-graphite mb-2 leading-tight">
+            Edredón Premium<br />
+            <span class="font-script text-4xl lg:text-5xl text-camel-dark">Alma de Mar</span>
+          </h3>
+
+          <!-- Estrellas -->
+          <div class="flex items-center gap-2 mb-5">
+            <div class="stars text-lg">★★★★★</div>
+            <span class="text-sm text-gray-500">4.9 / 5 — <span class="text-camel font-semibold">+200
+                reseñas</span></span>
+          </div>
+
+          <!-- Descripción corta -->
+          <p class="text-gray-600 text-sm leading-relaxed mb-6">
+            El elegante diseño acanalado añade un toque sofisticado a cualquier dormitorio.
+            Versatilidad que se adapta a cualquier tema decorativo, complementándolo perfectamente.
+            Ideal para temperaturas frescas o ambientes con aire acondicionado.
+          </p>
+
+          <!-- Qué incluye -->
+          <div class="bg-beige rounded-2xl p-5 mb-6 border border-camel/15">
+            <p class="text-xs font-bold text-graphite uppercase tracking-wider mb-3">
+              <i class="fa-solid fa-box-open text-camel mr-2"></i>El juego incluye:
+            </p>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fa-solid fa-check text-camel text-xs w-4"></i>
+                1 Edredón acanalado premium
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fa-solid fa-check text-camel text-xs w-4"></i>
+                2 Fundas de almohada combinadas (calidad + felpa)
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fa-solid fa-check text-camel text-xs w-4"></i>
+                Código único de participación en la promo
+              </li>
+            </ul>
+          </div>
+
+          <!-- Selector de talla -->
+          <div class="mb-6">
+            <p class="text-xs font-bold text-graphite uppercase tracking-wider mb-3">Selecciona tu talla:</p>
+            <div class="flex flex-wrap gap-2">
+              <button
+                class="size-option px-5 py-2 rounded-full border-2 border-camel/30 text-sm font-semibold text-gray-600 hover:border-camel hover:text-camel transition-all">
+                Sencillo
+              </button>
+              <button
+                class="size-option px-5 py-2 rounded-full border-2 border-camel/30 text-sm font-semibold text-gray-600 hover:border-camel hover:text-camel transition-all">
+                Doble
+              </button>
+              <button
+                class="size-option active px-5 py-2 rounded-full border-2 border-camel text-sm font-semibold text-camel bg-camel/10 transition-all">
+                Queen
+              </button>
+              <button
+                class="size-option px-5 py-2 rounded-full border-2 border-camel/30 text-sm font-semibold text-gray-600 hover:border-camel hover:text-camel transition-all">
+                King
+              </button>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="#promo-section" class="btn-cta flex-1 justify-center">
+              <i class="fa-solid fa-qrcode"></i> Escanea para mayor información
+            </a>
+            <a href="https://wa.me/573102439078?text=Hola,%20quiero%20informaci%C3%B3n%20del%20Edred%C3%B3n%20Alma%20de%20Mar"
+              target="_blank" rel="noopener" class="btn-outline flex-1 justify-center text-sm">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+
+          <!-- Promo tag -->
+          <div class="mt-5 flex items-center gap-3 p-3 bg-amber-50 border border-amber-200 rounded-xl">
+            <i class="fa-solid fa-trophy text-amber-500 text-xl flex-shrink-0"></i>
+            <p class="text-xs text-amber-800 leading-snug">
+              <strong>¡Tu compra te ingresa a la promo!</strong> Recibes un código único para participar por increíbles
+              incentivos. El código es un beneficio incluido, no se vende por separado.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+     CARACTERÍSTICAS
+     ==================================================== -->
+  <section id="product-features" class="py-20 lg:py-28 bg-beige">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-14 reveal">
+        <p class="section-eyebrow">✦ Por qué elegirlo ✦</p>
+        <h2 class="section-title text-4xl lg:text-5xl mt-3">
+          Características del <span class="collection-tag">Edredón</span>
+        </h2>
+        <div class="section-divider"><span>🛏️</span></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div class="feature-card reveal" style="transition-delay:0s">
+          <div class="feature-icon">🌊</div>
+          <h3 class="feature-title">Diseño Acanalado Elegante</h3>
+          <p class="feature-desc">El patrón de rayas acanaladas añade sofisticación y textura visual única a tu
+            dormitorio, diferenciándolo de los comunes.</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.1s">
+          <div class="feature-icon">🌡️</div>
+          <h3 class="feature-title">Temperatura Ideal</h3>
+          <p class="feature-desc">Regulación térmica superior. Ideal para noches frías o ambientes con aire
+            acondicionado, manteniéndote en el confort perfecto.</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.2s">
+          <div class="feature-icon">✨</div>
+          <h3 class="feature-title">Súper Suavidad Premium</h3>
+          <p class="feature-desc">Fabricado con materiales de primera calidad tipo felpa acanalada que acarician tu piel
+            con una suavidad incomparable cada noche.</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.3s">
+          <div class="feature-icon">🧺</div>
+          <h3 class="feature-title">Fácil Cuidado</h3>
+          <p class="feature-desc">Lavable a máquina sin complicaciones. Mantén tu edredón siempre impecable con el
+            cuidado más sencillo, ciclo suave y secado al aire.</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.4s">
+          <div class="feature-icon">🎨</div>
+          <h3 class="feature-title">Versátil en Decoración</h3>
+          <p class="feature-desc">El diseño neutro se adapta perfectamente a cualquier estilo decorativo, combinándose
+            con todo tipo de habitaciones y paletas de color.</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.5s">
+          <div class="feature-icon">🎁</div>
+          <h3 class="feature-title">Set Completo</h3>
+          <p class="feature-desc">1 edredón + 2 fundas de almohada (combinación calidad + felpa), la pareja perfecta
+            para una noche de sueño reparador de lujo.</p>
+        </div>
+      </div>
+
+      <!-- Acordeón detalles técnicos -->
+      <div id="product-details" class="max-w-3xl mx-auto bg-cream rounded-3xl p-8 shadow-sm reveal">
+        <h3 class="font-display text-2xl font-bold text-graphite mb-6 text-center">Información Detallada</h3>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span><i class="fa-solid fa-tag text-camel mr-3"></i>Composición y materiales</span>
+            <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Edredón de microfibra tipo felpa acanalada de alta densidad. Relleno de fibra hueca siliconada de
+                primera calidad que garantiza suavidad, ligereza y calor sin pesadez. Las fundas incluidas combinan
+                calidad de algodón con felpa suave en sus caras, brindando doble textura de confort.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span><i class="fa-solid fa-ruler text-camel mr-3"></i>Medidas disponibles</span>
+            <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <ul class="space-y-2">
+                <li>• <strong>Sencillo:</strong> 150 × 200 cm + 1 funda 50×70 cm</li>
+                <li>• <strong>Doble:</strong> 180 × 200 cm + 2 fundas 50×70 cm</li>
+                <li>• <strong>Queen:</strong> 200 × 220 cm + 2 fundas 50×70 cm</li>
+                <li>• <strong>King:</strong> 220 × 240 cm + 2 fundas 50×70 cm</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span><i class="fa-solid fa-shirt text-camel mr-3"></i>Instrucciones de cuidado</span>
+            <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <ul class="space-y-2">
+                <li>🌀 Lavar a máquina en ciclo suave, máx 30°C</li>
+                <li>❄️ No usar blanqueador ni cloro</li>
+                <li>☁️ Secar al aire libre o secadora baja temperatura</li>
+                <li>♨️ No planchar directamente sobre la felpa</li>
+                <li>🚫 No lavar en seco</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn">
+            <span><i class="fa-solid fa-gift text-camel mr-3"></i>Código de participación</span>
+            <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p>Con tu compra recibes un <strong>código único asignado automáticamente</strong> dentro de nuestra
+                promoción vigente. Este código puede ser seleccionado como beneficiario de increíbles incentivos. <em>El
+                  código es un beneficio promocional incluido con el producto y no se vende por separado.</em></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+     PROMO SECTION
+     ==================================================== -->
+  <section id="promo-section" class="py-20 lg:py-28 promo-bg relative overflow-hidden">
+    <div class="hero-bg" style="position:absolute;inset:0;opacity:0.05;"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <!-- Encabezado promo -->
+      <div class="text-center mb-14 reveal">
+        <div class="promo-badge">🎉 Promo Vigente — Edición Limitada</div>
+        <h2 class="promo-title text-4xl lg:text-6xl mb-4">
+          Gran Campaña <span class="highlight">Playita Más Ñapa</span>
+        </h2>
+        <p class="promo-desc max-w-2xl mx-auto">
+          Compra tu Edredón Alma de Mar y recibe un código único que puede hacerte beneficiario de increíbles premios.
+          El sueño de tus vacaciones puede estar en tu próxima noche de descanso.
+        </p>
+      </div>
+
+
+
+      <!-- Premios en juego -->
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+        <!-- Premio principal: Viaje Santa Marta -->
+        <div class="reveal-left">
+          <p class="text-xs uppercase tracking-widest text-camel font-bold mb-4">🏆 Premio Estrella</p>
+
+          <div class="rounded-2xl overflow-hidden mb-5 relative shadow-2xl">
+            <img src="assets/images/promo-viaje.jpg" alt="Estadía 5 días 4 noches en Santa Marta"
+              class="w-full h-56 sm:h-72 object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
+              <div>
+                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-1">¡Premio Mayor!</p>
+                <h3 class="font-display text-2xl sm:text-3xl font-bold text-white leading-tight">
+                  Estadía en Santa Marta<br />
+                  <span class="font-script text-4xl text-gold">5 Días · 4 Noches</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista premios adicionales -->
+          <div class="space-y-3">
+            <div class="prize-item">
+              <img src="assets/images/promo-camioneta.png" alt="Camioneta Sportage" class="prize-img" />
+              <div>
+                <p class="prize-name">Camioneta Sportage</p>
+                <p class="prize-sub">Premio adicional de la campaña</p>
+              </div>
+            </div>
+            <div class="prize-item">
+              <img src="assets/images/promo-bici.png" alt="Bici playera" class="prize-img" />
+              <div>
+                <p class="prize-name">Bici Playera</p>
+                <p class="prize-sub">Ya que vas para la playa… ¡que mejor en bici!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cómo funciona + precio -->
+        <div class="reveal-right">
+          <p class="text-xs uppercase tracking-widest text-camel font-bold mb-4">📋 ¿Cómo funciona?</p>
+
+          <div class="space-y-3 mb-8">
+            <div class="promo-step">
+              <div class="step-number">1</div>
+              <p class="step-text"><strong>Compra tu Edredón Alma de Mar</strong> y completa tu pedido.</p>
+            </div>
+            <div class="promo-step">
+              <div class="step-number">2</div>
+              <p class="step-text">Recibe tu <strong>código único asignado automáticamente</strong> con tu producto.</p>
+            </div>
+            <div class="promo-step">
+              <div class="step-number">3</div>
+              <p class="step-text"><strong>Escanea el QR</strong> para conocer todos los detalles de nuestra campaña.
+              </p>
+            </div>
+            <div class="promo-step">
+              <div class="step-number">4</div>
+              <p class="step-text"><strong>Guarda tu código</strong> — ¡podrías ser el próximo beneficiario!</p>
+            </div>
+          </div>
+
+          <!-- Precio cuotas -->
+          <div class="price-band mb-6">
+            <p class="price-label text-white/60 mb-2">Paga cómodamente a cuotas</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <div>
+                <p class="text-white/50 text-xs uppercase tracking-wider">Cuota quincenal</p>
+                <p class="price-amount">$25.000</p>
+              </div>
+              <div class="text-white/30 text-2xl font-thin hidden sm:block">|</div>
+              <div>
+                <p class="text-white/50 text-xs uppercase tracking-wider">Hasta completar</p>
+                <p class="price-amount" style="font-size:2rem;">$150.000</p>
+              </div>
+            </div>
+            <p class="price-note mt-3">* El pago a cuotas aplica según acuerdo con el vendedor</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- QR destacado dentro de promo -->
+      <div class="mt-16 reveal">
+        <div
+          class="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm border border-white/15 rounded-3xl p-8 sm:p-12 flex flex-col sm:flex-row items-center gap-8">
+          <!-- QR imagen -->
+          <div class="flex-shrink-0">
+            <div class="bg-white rounded-2xl p-4 shadow-2xl">
+              <img src="assets/images/qr-promo.png" alt="Código QR campaña Niido Home"
+                class="w-44 h-44 sm:w-52 sm:h-52 object-contain" />
+            </div>
+          </div>
+          <!-- Texto al lado del QR -->
+          <div class="text-center sm:text-left">
+            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-2">📲 Escanea Ahora</p>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">
+              Conoce todos los detalles<br />
+              <span class="font-script text-4xl text-gold">de la campaña</span>
+            </h3>
+            <p class="text-white/65 text-sm leading-relaxed mb-5">
+              Apunta la cámara de tu celular al código QR para acceder a nuestra plataforma, verificar tu código y
+              mantenerte al tanto de la campaña.
+            </p>
+            <div class="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-xl px-4 py-2">
+              <i class="fa-solid fa-circle-info text-gold text-sm"></i>
+              <p class="text-white/80 text-xs font-medium">"Recorta y guarda tu código ¡puedes ser el beneficiario!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ====================================================
+     FORMULARIO DE CONTACTO
+     ==================================================== -->
+  <section id="contact-section" class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Encabezado -->
+      <div class="text-center mb-12 reveal">
+        <p class="section-eyebrow">&#10022; Hablemos &#10022;</p>
+        <h2 class="section-title text-4xl lg:text-5xl mt-3">
+          ¿Tienes <span class="collection-tag">alguna pregunta?</span>
+        </h2>
+        <div class="section-divider"><span>📨</span></div>
+        <p class="text-gray-500 max-w-lg mx-auto leading-relaxed">
+          Escríbenos y con gusto te asesoramos sobre el Edredón Alma de Mar,
+          tallas disponibles, envíos o la promoción vigente.
+        </p>
+      </div>
+
+      <!-- Tarjeta del formulario -->
+      <div class="bg-white rounded-3xl shadow-xl border border-camel/10 p-8 sm:p-12 reveal">
+
+        <!-- Alerta de éxito -->
+        <div id="form-success"
+          class="hidden mb-6 flex items-center gap-3 bg-green-50 border border-green-200 rounded-2xl px-5 py-4">
+          <i class="fa-solid fa-circle-check text-green-500 text-xl flex-shrink-0"></i>
+          <div>
+            <p class="font-semibold text-green-800 text-sm">&#161;Mensaje enviado con éxito!</p>
+            <p class="text-green-700 text-xs mt-0.5">Te responderemos a la brevedad. &#161;Gracias por contactarnos!</p>
+          </div>
+        </div>
+
+        <!-- Alerta de error -->
+        <div id="form-error"
+          class="hidden mb-6 flex items-center gap-3 bg-red-50 border border-red-200 rounded-2xl px-5 py-4">
+          <i class="fa-solid fa-circle-exclamation text-red-500 text-xl flex-shrink-0"></i>
+          <div>
+            <p class="font-semibold text-red-800 text-sm">Ocurrió un error al enviar</p>
+            <p class="text-red-700 text-xs mt-0.5">Por favor inténtalo de nuevo o escríbenos por WhatsApp.</p>
+          </div>
+        </div>
+
+        <form id="contact-form" novalidate>
+
+          <!-- Fila 1: Nombre + Correo -->
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div class="form-group">
+              <label for="cf-name" class="form-label">
+                <i class="fa-solid fa-user text-camel mr-1.5 text-xs"></i> Nombre completo
+              </label>
+              <input id="cf-name" name="nombre" type="text" placeholder="Tu nombre" required minlength="2"
+                autocomplete="name" class="form-input" />
+              <span class="form-error-msg" id="err-name"></span>
+            </div>
+            <div class="form-group">
+              <label for="cf-email" class="form-label">
+                <i class="fa-solid fa-envelope text-camel mr-1.5 text-xs"></i> Correo electrónico
+              </label>
+              <input id="cf-email" name="correo" type="email" placeholder="tucorreo@ejemplo.com" required
+                autocomplete="email" class="form-input" />
+              <span class="form-error-msg" id="err-email"></span>
+            </div>
+          </div>
+
+          <!-- Fila 2: Teléfono -->
+          <div class="form-group mb-4">
+            <label for="cf-phone" class="form-label">
+              <i class="fa-solid fa-phone text-camel mr-1.5 text-xs"></i> Número de teléfono
+            </label>
+            <input id="cf-phone" name="telefono" type="tel" placeholder="+57 300 000 0000" autocomplete="tel"
+              class="form-input" />
+          </div>
+
+          <!-- Fila 3: Comentario -->
+          <div class="form-group mb-6">
+            <label for="cf-message" class="form-label">
+              <i class="fa-solid fa-comment-dots text-camel mr-1.5 text-xs"></i> Comentario o pregunta
+            </label>
+            <textarea id="cf-message" name="mensaje" rows="5" placeholder="Escribe tu mensaje…" required minlength="10"
+              class="form-input resize-none"></textarea>
+            <span class="form-error-msg" id="err-message"></span>
+          </div>
+
+          <!-- Botón enviar -->
+          <button id="form-submit-btn" type="submit" class="btn-cta w-full justify-center text-base">
+            <span id="btn-text"><i class="fa-solid fa-paper-plane"></i> Enviar mensaje</span>
+            <span id="btn-loading" class="hidden">
+              <i class="fa-solid fa-circle-notch fa-spin"></i> Enviando…
+            </span>
+          </button>
+
+          <!-- Aviso Formspree placeholder -->
+          <p class="text-center text-xs text-gray-400 mt-4">
+            <i class="fa-solid fa-lock mr-1"></i>
+            Tus datos están protegidos y no serán compartidos con terceros.
+          </p>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+     TESTIMONIOS
+     ==================================================== -->
+
+
+  <!-- ====================================================
+     FOOTER
+     ==================================================== -->
+  <footer id="site-footer" class="pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+        <!-- Brand -->
+        <div class="lg:col-span-2">
+          <img src="assets/images/logo.png" alt="Niido Home" class="footer-logo h-12 mb-4" />
+          <p class="text-sm text-white/50 leading-relaxed max-w-sm">
+            Tu lugar, tu espacio, tu mundo. Creamos experiencias de confort premium para transformar tu hogar en el
+            refugio perfecto.
+          </p>
+          <div class="flex gap-3 mt-5">
+            <a href="https://wa.me/573102439078" target="_blank" rel="noopener" class="social-btn"
+              aria-label="WhatsApp de Niido Home">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Producto</h4>
+          <ul class="space-y-2">
+            <li><a href="#product-gallery" class="footer-link">Ver Edredón</a></li>
+            <li><a href="#product-features" class="footer-link">Características</a></li>
+            <li><a href="#product-details" class="footer-link">Info Técnica</a></li>
+            <li><a href="#testimonials" class="footer-link">Reseñas</a></li>
+          </ul>
+        </div>
+
+        <!-- Promo -->
+        <div>
+          <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Promoción</h4>
+          <ul class="space-y-2">
+            <li><a href="#promo-section" class="footer-link">Campaña Playita Más Ñapa</a></li>
+            <li><a href="https://wa.me/573102439078" target="_blank" rel="noopener" class="footer-link">Contactar por
+                WhatsApp</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <hr class="footer-divider border mb-8" />
+
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/30">
+        <p>© 2026 Niido Home. Todos los derechos reservados.</p>
+        <p class="font-script text-white/20 text-lg">Tu lugar, tu espacio, tu mundo.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Sticky CTA Móvil -->
+  <div id="sticky-cta" class="sticky-cta" style="transform:translateY(100%); transition: transform 0.3s ease;">
+    <a href="#promo-section" class="btn-cta text-sm flex-1 justify-center">
+      <i class="fa-solid fa-qrcode"></i> Ver Promo & QR
+    </a>
+    <a href="https://wa.me/573102439078" target="_blank" rel="noopener"
+      class="btn-outline text-sm flex-1 justify-center">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+  <!-- Script principal -->
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- ====================================================
+     FORMULARIO — Formspree (sin backend, sin instalación)
+     INSTRUCCIONES:
+     1. Ve a https://formspree.io → crea cuenta gratuita
+     2. Crea un nuevo formulario → copia tu endpoint
+     3. Reemplaza YOUR_FORM_ID en la línea FORMSPREE_ENDPOINT
+     ==================================================== -->
+  <script>
+      (function () {
+        'use strict';
+
+        // ================================================
+        // ⚠️ CAMBIA ESTE VALOR POR TU ENDPOINT DE FORMSPREE
+        // Ejemplo: 'https://formspree.io/f/xabc1234'
+        // ================================================
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/niidohome08@gmail.com';
+
+        const form = document.getElementById('contact-form');
+        const btnText = document.getElementById('btn-text');
+        const btnLoading = document.getElementById('btn-loading');
+        const submitBtn = document.getElementById('form-submit-btn');
+        const successBox = document.getElementById('form-success');
+        const errorBox = document.getElementById('form-error');
+
+        if (!form) return;
+
+        /* --- Helpers de UI --- */
+        const showAlert = (el) => {
+          el.classList.remove('hidden');
+          el.classList.add('flex');
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+        const hideAlert = (el) => {
+          el.classList.add('hidden');
+          el.classList.remove('flex');
+        };
+        const setLoading = (on) => {
+          btnText.classList.toggle('hidden', on);
+          btnLoading.classList.toggle('hidden', !on);
+          submitBtn.disabled = on;
+        };
+
+        /* --- Validación en tiempo real --- */
+        const showFieldError = (inputId, errId, msg) => {
+          const input = document.getElementById(inputId);
+          const err = document.getElementById(errId);
+          if (!input || !err) return;
+          if (msg) {
+            input.classList.add('border-red-400', 'bg-red-50/40');
+            input.classList.remove('border-camel/30');
+            err.textContent = msg;
+          } else {
+            input.classList.remove('border-red-400', 'bg-red-50/40');
+            input.classList.add('border-camel/30');
+            err.textContent = '';
+          }
+        };
+
+        const validateForm = () => {
+          let valid = true;
+          const name = document.getElementById('cf-name').value.trim();
+          const email = document.getElementById('cf-email').value.trim();
+          const message = document.getElementById('cf-message').value.trim();
+          const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (name.length < 2) {
+            showFieldError('cf-name', 'err-name', 'Por favor ingresa tu nombre (mín. 2 caracteres).');
+            valid = false;
+          } else { showFieldError('cf-name', 'err-name', ''); }
+
+          if (!emailRx.test(email)) {
+            showFieldError('cf-email', 'err-email', 'Ingresa un correo electrónico válido.');
+            valid = false;
+          } else { showFieldError('cf-email', 'err-email', ''); }
+
+          if (message.length < 10) {
+            showFieldError('cf-message', 'err-message', 'El mensaje debe tener al menos 10 caracteres.');
+            valid = false;
+          } else { showFieldError('cf-message', 'err-message', ''); }
+
+          return valid;
+        };
+
+        /* Validación en tiempo real al salir del campo */
+        ['cf-name', 'cf-email', 'cf-message'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener('blur', validateForm);
+        });
+
+        /* --- Envío del formulario --- */
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          hideAlert(successBox);
+          hideAlert(errorBox);
+
+          if (!validateForm()) return;
+
+          setLoading(true);
+
+          try {
+            const data = new FormData(form);
+            const res = await fetch(FORMSPREE_ENDPOINT, {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' },
+            });
+
+            if (res.ok) {
+              showAlert(successBox);
+              form.reset();
+              /* Reset estilos de validación */
+              ['cf-name', 'cf-email', 'cf-message'].forEach(id => {
+                const inp = document.getElementById(id);
+                if (inp) inp.classList.remove('border-red-400', 'bg-red-50/40');
+              });
+            } else {
+              showAlert(errorBox);
+            }
+          } catch (_) {
+            showAlert(errorBox);
+          } finally {
+            setLoading(false);
+          }
+        });
+      })();
+  </script>
+
+</body>
+
+</html>
