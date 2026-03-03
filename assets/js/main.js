@@ -33,8 +33,8 @@
    2. MENÚ MÓVIL
    =================================================== */
 (function initMobileMenu() {
-  const btn   = document.getElementById('menu-toggle');
-  const menu  = document.getElementById('mobile-menu');
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
   const links = menu ? menu.querySelectorAll('a') : [];
 
   if (!btn || !menu) return;
@@ -62,8 +62,8 @@
    3. GALERÍA DE PRODUCTO
    =================================================== */
 (function initGallery() {
-  const mainImg  = document.getElementById('gallery-main-img');
-  const thumbs   = document.querySelectorAll('.gallery-thumb');
+  const mainImg = document.getElementById('gallery-main-img');
+  const thumbs = document.querySelectorAll('.gallery-thumb');
 
   if (!mainImg || !thumbs.length) return;
 
@@ -97,10 +97,10 @@
    4. LIGHTBOX
    =================================================== */
 (function initLightbox() {
-  const lightbox    = document.getElementById('lightbox');
+  const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn    = document.getElementById('lightbox-close');
-  const mainImg     = document.getElementById('gallery-main-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const mainImg = document.getElementById('gallery-main-img');
 
   if (!lightbox || !lightboxImg || !mainImg) return;
 
@@ -141,8 +141,8 @@
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const body     = btn.nextElementSibling;
-      const isOpen   = btn.classList.contains('open');
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
 
       // Cerrar todos
       document.querySelectorAll('.accordion-btn.open').forEach(openBtn => {
@@ -206,7 +206,7 @@
   const pad = (n) => String(n).padStart(2, '0');
 
   const update = () => {
-    const now  = new Date();
+    const now = new Date();
     const diff = deadline - now;
     if (diff <= 0) {
       el.textContent = '¡Promoción finalizada!';
@@ -217,8 +217,8 @@
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
 
-    document.getElementById('cd-days').textContent    = pad(d);
-    document.getElementById('cd-hours').textContent   = pad(h);
+    document.getElementById('cd-days').textContent = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
     document.getElementById('cd-minutes').textContent = pad(m);
     document.getElementById('cd-seconds').textContent = pad(s);
   };
@@ -234,11 +234,11 @@
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href').slice(1);
-      const target   = document.getElementById(targetId);
+      const target = document.getElementById(targetId);
       if (!target) return;
       e.preventDefault();
       const offset = 80; // altura del header fijo
-      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
@@ -276,4 +276,60 @@
   }, { threshold: 0 });
 
   observer.observe(heroSection);
+})();
+
+/* ===================================================
+   11. GALERÍA DE INCENTIVOS — Carrusel por mes
+       Al hacer clic en un thumbnail se muestra en la
+       imagen principal con efecto fade suave.
+   =================================================== */
+(function initIncentiveGalleries() {
+  /**
+   * Seleccionamos todos los thumbnails de incentivos.
+   * Cada botón tiene:
+   *   data-target  → ID de la <img> principal a actualizar
+   *   data-src     → ruta de la imagen a mostrar
+   *   data-alt     → texto alternativo de accesibilidad
+   */
+  const thumbs = document.querySelectorAll('.inc-thumb');
+  if (!thumbs.length) return;
+
+  thumbs.forEach(function (thumb) {
+    thumb.addEventListener('click', function () {
+      const targetId = thumb.dataset.target;
+      const newSrc = thumb.dataset.src;
+      const newAlt = thumb.dataset.alt || '';
+      const mainImg = document.getElementById(targetId);
+
+      if (!mainImg || !newSrc) return;
+
+      // ── 1. Obtener todos los thumbs del mismo grupo (mismo target) ──
+      const siblingThumbs = document.querySelectorAll(
+        '.inc-thumb[data-target="' + targetId + '"]'
+      );
+
+      // ── 2. Si ya está activo, no hacer nada ──
+      if (thumb.classList.contains('active')) return;
+
+      // ── 3. Fade-out de la imagen principal ──
+      mainImg.classList.add('fading');
+
+      setTimeout(function () {
+        // ── 4. Cambiar src + alt ──
+        mainImg.src = newSrc;
+        mainImg.alt = newAlt;
+
+        // ── 5. Fade-in ──
+        mainImg.classList.remove('fading');
+
+        // ── 6. Actualizar estado activo en los thumbnails ──
+        siblingThumbs.forEach(function (t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-pressed', 'false');
+        });
+        thumb.classList.add('active');
+        thumb.setAttribute('aria-pressed', 'true');
+      }, 280); // coincide con la duración del CSS transition fade
+    });
+  });
 })();

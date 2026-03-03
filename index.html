@@ -624,12 +624,43 @@
         <!-- Tarjetas de los 3 incentivos -->
         <div class="grid sm:grid-cols-3 gap-6">
 
-          <!-- MES 1 -->
+          <!-- ======= MES 1 — Pesquera Jaramillo ======= -->
           <div class="incentive-card reveal" style="transition-delay:0s">
             <div class="incentive-month">Mes 1</div>
-            <div class="incentive-icon-wrap">
-              <span class="incentive-emoji">🍽️</span>
+
+            <!-- Imagen principal del incentivo -->
+            <div class="incentive-gallery">
+              <div class="incentive-main-wrap">
+                <img id="inc-main-1" class="incentive-main-img"
+                  src="assets/images/incentivos/mes1-pesquera-principal.webp" alt="Pesquera Jaramillo — Vista principal"
+                  loading="lazy" />
+              </div>
+
+              <!-- Carrusel de interiores -->
+              <div class="incentive-thumbs" role="list" aria-label="Galería Pesquera Jaramillo">
+                <button class="inc-thumb active" data-target="inc-main-1"
+                  data-src="assets/images/incentivos/mes1-pesquera-principal.webp"
+                  data-alt="Pesquera Jaramillo — Vista principal" aria-label="Ver imagen principal" aria-pressed="true">
+                  <img src="assets/images/incentivos/mes1-pesquera-principal.webp" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-1"
+                  data-src="assets/images/incentivos/mes1-pesquera-interior-1.webp"
+                  data-alt="Pesquera Jaramillo — Interior 1" aria-label="Ver interior 1" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes1-pesquera-interior-1.webp" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-1"
+                  data-src="assets/images/incentivos/mes1-pesquera-interior-2.jpg"
+                  data-alt="Pesquera Jaramillo — Interior 2" aria-label="Ver interior 2" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes1-pesquera-interior-2.jpg" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-1"
+                  data-src="assets/images/incentivos/mes1-pesquera-interior-3.jpg"
+                  data-alt="Pesquera Jaramillo — Interior 3" aria-label="Ver interior 3" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes1-pesquera-interior-3.jpg" alt="" loading="lazy" />
+                </button>
+              </div>
             </div>
+
             <h4 class="incentive-title">Cena para 2</h4>
             <p class="incentive-place">Pesquera Jaramillo</p>
             <p class="incentive-desc">
@@ -641,12 +672,52 @@
             </div>
           </div>
 
-          <!-- MES 2 -->
+          <!-- ======= MES 2 — Hotel Ricaurte ======= -->
           <div class="incentive-card reveal" style="transition-delay:0.15s">
             <div class="incentive-month">Mes 2</div>
-            <div class="incentive-icon-wrap">
-              <span class="incentive-emoji">🏨</span>
+
+            <!-- Imagen principal del incentivo -->
+            <div class="incentive-gallery">
+              <div class="incentive-main-wrap">
+                <img id="inc-main-2" class="incentive-main-img" src="assets/images/incentivos/mes2-hotel-principal.png"
+                  alt="Hotel Ricaurte Cundinamarca — Vista principal" loading="lazy" />
+              </div>
+
+              <!-- Carrusel de interiores -->
+              <div class="incentive-thumbs" role="list" aria-label="Galería Hotel Ricaurte">
+                <button class="inc-thumb active" data-target="inc-main-2"
+                  data-src="assets/images/incentivos/mes2-hotel-principal.png"
+                  data-alt="Hotel Ricaurte — Vista principal" aria-label="Ver imagen principal" aria-pressed="true">
+                  <img src="assets/images/incentivos/mes2-hotel-principal.png" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-2"
+                  data-src="assets/images/incentivos/mes2-hotel-interior-1.jpg" data-alt="Hotel Ricaurte — Interior 1"
+                  aria-label="Ver interior 1" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes2-hotel-interior-1.jpg" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-2"
+                  data-src="assets/images/incentivos/mes2-hotel-interior-2.jpg" data-alt="Hotel Ricaurte — Interior 2"
+                  aria-label="Ver interior 2" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes2-hotel-interior-2.jpg" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-2"
+                  data-src="assets/images/incentivos/mes2-hotel-interior-3.jpg" data-alt="Hotel Ricaurte — Interior 3"
+                  aria-label="Ver interior 3" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes2-hotel-interior-3.jpg" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-2"
+                  data-src="assets/images/incentivos/mes2-hotel-interior-4.jpg" data-alt="Hotel Ricaurte — Interior 4"
+                  aria-label="Ver interior 4" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes2-hotel-interior-4.jpg" alt="" loading="lazy" />
+                </button>
+                <button class="inc-thumb" data-target="inc-main-2"
+                  data-src="assets/images/incentivos/mes2-hotel-interior-5.jpg" data-alt="Hotel Ricaurte — Interior 5"
+                  aria-label="Ver interior 5" aria-pressed="false">
+                  <img src="assets/images/incentivos/mes2-hotel-interior-5.jpg" alt="" loading="lazy" />
+                </button>
+              </div>
             </div>
+
             <h4 class="incentive-title">Noche de Hotel</h4>
             <p class="incentive-place">Ricaurte, Cundinamarca</p>
             <p class="incentive-desc">
@@ -658,12 +729,28 @@
             </div>
           </div>
 
-          <!-- MES 3 -->
+          <!-- ======= MES 3 — Bicicleta Todo Terreno ======= -->
           <div class="incentive-card reveal" style="transition-delay:0.3s">
             <div class="incentive-month">Mes 3</div>
-            <div class="incentive-icon-wrap">
-              <span class="incentive-emoji">🚵</span>
+
+            <!-- Imagen principal del incentivo -->
+            <div class="incentive-gallery">
+              <div class="incentive-main-wrap">
+                <img id="inc-main-3" class="incentive-main-img"
+                  src="assets/images/incentivos/mes3-bicicleta-principal.png"
+                  alt="Bicicleta Todo Terreno — Premio Mes 3" loading="lazy" />
+              </div>
+              <!-- Sin fotos de interiores para la bici: solo la principal -->
+              <div class="incentive-thumbs" role="list" aria-label="Galería Bicicleta Todo Terreno">
+                <button class="inc-thumb active" data-target="inc-main-3"
+                  data-src="assets/images/incentivos/mes3-bicicleta-principal.png"
+                  data-alt="Bicicleta Todo Terreno — Vista principal" aria-label="Ver imagen principal"
+                  aria-pressed="true">
+                  <img src="assets/images/incentivos/mes3-bicicleta-principal.png" alt="" loading="lazy" />
+                </button>
+              </div>
             </div>
+
             <h4 class="incentive-title">Bicicleta</h4>
             <p class="incentive-place">Todo Terreno</p>
             <p class="incentive-desc">

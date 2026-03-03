@@ -1395,3 +1395,147 @@ img {
   padding: 0.4rem 0.9rem;
   border-radius: 50px;
 }
+
+/* ============================================================
+   GALERÍA DE INCENTIVOS — Imagen principal + Carrusel
+   ============================================================ */
+
+/* Contenedor de la galería dentro de la tarjeta */
+.incentive-gallery {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+/* Imagen principal del incentivo */
+.incentive-main-wrap {
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.6rem;
+}
+
+.incentive-main-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.28s ease, transform 0.35s ease;
+  transform-origin: center;
+}
+
+.incentive-main-wrap:hover .incentive-main-img {
+  transform: scale(1.03);
+}
+
+/* Clase auxiliar usada por JS para el fade-out al cambiar imagen */
+.incentive-main-img.fading {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+/* Barra de thumbnails — carrusel horizontal con scroll */
+.incentive-thumbs {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.5) rgba(255, 255, 255, 0.06);
+}
+
+.incentive-thumbs::-webkit-scrollbar {
+  height: 3px;
+}
+
+.incentive-thumbs::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+}
+
+.incentive-thumbs::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.55);
+  border-radius: 3px;
+}
+
+/* Botón / thumbnail individual */
+.inc-thumb {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 56px;
+  height: 42px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  background: none;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+  outline: none;
+}
+
+.inc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.28s ease;
+}
+
+.inc-thumb:hover {
+  border-color: rgba(201, 168, 76, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.inc-thumb:hover img {
+  transform: scale(1.08);
+}
+
+.inc-thumb.active {
+  border-color: var(--nh-gold);
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.45), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* ── RESPONSIVO ─────────────────────────────────────────── */
+
+/* En pantallas medianas (tablet) la tarjeta de incentivos
+   usa todo el ancho de la columna del grid sm:grid-cols-3 */
+@media (max-width: 639px) {
+
+  /* En móvil el grid pasa a 1 columna: la imagen puede ser
+     más grande y el carrusel ocupa todo el ancho */
+  .incentive-main-img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .inc-thumb {
+    width: 64px;
+    height: 48px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+
+  /* Tablet: 3 columnas relativamente pequeñas → thumbnails compactos */
+  .inc-thumb {
+    width: 44px;
+    height: 33px;
+  }
+
+  .incentive-main-img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* Desktop: columnas amplias → thumbnails más grandes */
+  .inc-thumb {
+    width: 60px;
+    height: 45px;
+  }
+}
