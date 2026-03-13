@@ -345,10 +345,11 @@ img {
 
 .hero-subtitle {
   font-family: var(--font-script);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(3.5rem, 9vw, 5.5rem);
   color: var(--nh-camel-dark);
-  line-height: 1.2;
-  margin: 0.5rem 0 1.5rem;
+  line-height: 1;
+  margin: 0.5rem 0 2rem 0;
+  filter: drop-shadow(0 4px 10px rgba(140, 107, 62, 0.1));
 }
 
 .hero-desc {
